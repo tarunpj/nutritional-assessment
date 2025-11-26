@@ -472,7 +472,100 @@ function App() {
 
               {/* Quick Add Foods */}
               <div style={{ background: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 5px 15px rgba(0,0,0,0.08)' }}>
-                <h3 style={{ margin: '0 0 20px 0', color: '#333' }}>🍎 Quick Add Foods</h3>
+                <h3 style={{ margin: '0 0 20px 0', color: '#1e293b' }}>🍎 Quick Add Foods</h3>
+                
+                {/* Food Search */}
+                <div style={{ marginBottom: '20px' }}>
+                  <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+                    <input
+                      type="text"
+                      placeholder="Search for any food (e.g., 'pizza', 'salad', 'oatmeal')"
+                      value={foodQuery}
+                      onChange={(e) => setFoodQuery(e.target.value)}
+                      onKeyPress={(e) => e.key === 'Enter' && searchFood()}
+                      style={{
+                        flex: 1,
+                        padding: '12px',
+                        border: '1px solid #e2e8f0',
+                        borderRadius: '8px',
+                        fontSize: '14px',
+                        background: 'white',
+                        color: '#1e293b'
+                      }}
+                    />
+                    <button
+                      onClick={searchFood}
+                      style={{
+                        padding: '12px 20px',
+                        background: '#475569',
+                        color: 'white',
+                        border: 'none',
+                        borderRadius: '8px',
+                        cursor: 'pointer',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      Search
+                    </button>
+                  </div>
+                  
+                  {/* Search Result */}
+                  {nutritionInfo && !nutritionInfo.error && (
+                    <div style={{ background: '#f8fafc', padding: '15px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                        <h4 style={{ margin: 0, color: '#1e293b', textTransform: 'capitalize' }}>{nutritionInfo.foodName}</h4>
+                        <button
+                          onClick={() => addQuickFood({
+                            foodName: nutritionInfo.foodName,
+                            quantity: 100,
+                            unit: 'g',
+                            calories: nutritionInfo.nutrition.calories,
+                            protein: nutritionInfo.nutrition.protein,
+                            carbs: nutritionInfo.nutrition.carbs,
+                            fats: nutritionInfo.nutrition.fats
+                          })}
+                          style={{
+                            padding: '6px 12px',
+                            background: '#475569',
+                            color: 'white',
+                            border: 'none',
+                            borderRadius: '6px',
+                            cursor: 'pointer',
+                            fontSize: '12px'
+                          }}
+                        >
+                          + Add
+                        </button>
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '10px', fontSize: '12px' }}>
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ fontWeight: 'bold', color: '#1e293b' }}>{nutritionInfo.nutrition.calories}</div>
+                          <div style={{ color: '#64748b' }}>Calories</div>
+                        </div>
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ fontWeight: 'bold', color: '#1e293b' }}>{nutritionInfo.nutrition.protein}g</div>
+                          <div style={{ color: '#64748b' }}>Protein</div>
+                        </div>
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ fontWeight: 'bold', color: '#1e293b' }}>{nutritionInfo.nutrition.carbs}g</div>
+                          <div style={{ color: '#64748b' }}>Carbs</div>
+                        </div>
+                        <div style={{ textAlign: 'center' }}>
+                          <div style={{ fontWeight: 'bold', color: '#1e293b' }}>{nutritionInfo.nutrition.fats}g</div>
+                          <div style={{ color: '#64748b' }}>Fats</div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {nutritionInfo && nutritionInfo.error && (
+                    <div style={{ background: '#fef2f2', padding: '10px', borderRadius: '6px', border: '1px solid #fecaca', color: '#dc2626', fontSize: '14px' }}>
+                      {nutritionInfo.error}
+                    </div>
+                  )}
+                </div>
+                
+                <h4 style={{ margin: '0 0 15px 0', color: '#64748b', fontSize: '14px' }}>Popular Foods:</h4>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '15px' }}>
                   {[
                     { foodName: 'Apple', quantity: 1, unit: 'medium', calories: 95, protein: 0.5, carbs: 25, fats: 0.3, emoji: '🍎' },
@@ -794,20 +887,21 @@ function App() {
                 </div>
               )}
 
-              <div style={{ textAlign: 'center', color: '#666', fontSize: '14px' }}>
+              <div style={{ textAlign: 'center', color: '#64748b', fontSize: '14px' }}>
                 <div style={{ marginBottom: '10px' }}>Try searching for:</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center' }}>
-                  {['apple', 'banana', 'chicken breast', 'rice', 'pizza', 'broccoli', 'salmon', 'bread'].map(food => (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', justifyContent: 'center' }}>
+                  {['apple', 'banana', 'chicken breast', 'rice', 'pizza', 'broccoli', 'salmon', 'bread', 'egg', 'oatmeal', 'yogurt', 'almonds', 'pasta', 'spinach', 'orange', 'burger'].map(food => (
                     <button
                       key={food}
                       onClick={() => { setFoodQuery(food); searchFood(); }}
                       style={{
-                        padding: '8px 15px',
-                        background: '#f1f3f4',
-                        border: '1px solid #dadce0',
-                        borderRadius: '20px',
+                        padding: '6px 12px',
+                        background: '#f8fafc',
+                        border: '1px solid #e2e8f0',
+                        borderRadius: '15px',
                         cursor: 'pointer',
-                        fontSize: '12px'
+                        fontSize: '11px',
+                        color: '#475569'
                       }}
                     >
                       {food}

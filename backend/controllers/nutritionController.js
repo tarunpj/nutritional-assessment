@@ -114,16 +114,64 @@ const getNutritionInfo = async (req, res) => {
   try {
     const { foodName } = req.params;
     
-    // Simple nutrition database - in production, use a real API
+    // Expanded nutrition database
     const nutritionData = {
+      // Fruits
       'apple': { calories: 52, protein: 0.3, carbs: 14, fats: 0.2, rating: 'A' },
       'banana': { calories: 89, protein: 1.1, carbs: 23, fats: 0.3, rating: 'A' },
-      'chicken breast': { calories: 165, protein: 31, carbs: 0, fats: 3.6, rating: 'A' },
-      'rice': { calories: 130, protein: 2.7, carbs: 28, fats: 0.3, rating: 'B' },
-      'pizza': { calories: 266, protein: 11, carbs: 33, fats: 10, rating: 'D' },
+      'orange': { calories: 47, protein: 0.9, carbs: 12, fats: 0.1, rating: 'A' },
+      'grapes': { calories: 62, protein: 0.6, carbs: 16, fats: 0.2, rating: 'A' },
+      'strawberry': { calories: 32, protein: 0.7, carbs: 8, fats: 0.3, rating: 'A' },
+      'mango': { calories: 60, protein: 0.8, carbs: 15, fats: 0.4, rating: 'A' },
+      
+      // Vegetables
       'broccoli': { calories: 34, protein: 2.8, carbs: 7, fats: 0.4, rating: 'A' },
+      'spinach': { calories: 23, protein: 2.9, carbs: 3.6, fats: 0.4, rating: 'A' },
+      'carrot': { calories: 41, protein: 0.9, carbs: 10, fats: 0.2, rating: 'A' },
+      'tomato': { calories: 18, protein: 0.9, carbs: 3.9, fats: 0.2, rating: 'A' },
+      'cucumber': { calories: 16, protein: 0.7, carbs: 4, fats: 0.1, rating: 'A' },
+      'lettuce': { calories: 15, protein: 1.4, carbs: 2.9, fats: 0.2, rating: 'A' },
+      
+      // Proteins
+      'chicken breast': { calories: 165, protein: 31, carbs: 0, fats: 3.6, rating: 'A' },
       'salmon': { calories: 208, protein: 20, carbs: 0, fats: 13, rating: 'A' },
-      'bread': { calories: 265, protein: 9, carbs: 49, fats: 3.2, rating: 'C' }
+      'tuna': { calories: 144, protein: 30, carbs: 0, fats: 1, rating: 'A' },
+      'egg': { calories: 155, protein: 13, carbs: 1.1, fats: 11, rating: 'A' },
+      'beef': { calories: 250, protein: 26, carbs: 0, fats: 15, rating: 'B' },
+      'tofu': { calories: 76, protein: 8, carbs: 1.9, fats: 4.8, rating: 'A' },
+      
+      // Grains & Carbs
+      'rice': { calories: 130, protein: 2.7, carbs: 28, fats: 0.3, rating: 'B' },
+      'bread': { calories: 265, protein: 9, carbs: 49, fats: 3.2, rating: 'C' },
+      'pasta': { calories: 131, protein: 5, carbs: 25, fats: 1.1, rating: 'B' },
+      'oatmeal': { calories: 68, protein: 2.4, carbs: 12, fats: 1.4, rating: 'A' },
+      'quinoa': { calories: 120, protein: 4.4, carbs: 22, fats: 1.9, rating: 'A' },
+      
+      // Dairy
+      'milk': { calories: 42, protein: 3.4, carbs: 5, fats: 1, rating: 'B' },
+      'yogurt': { calories: 59, protein: 10, carbs: 3.6, fats: 0.4, rating: 'A' },
+      'cheese': { calories: 113, protein: 7, carbs: 1, fats: 9, rating: 'C' },
+      
+      // Nuts & Seeds
+      'almonds': { calories: 579, protein: 21, carbs: 22, fats: 50, rating: 'B' },
+      'peanuts': { calories: 567, protein: 26, carbs: 16, fats: 49, rating: 'B' },
+      'walnuts': { calories: 654, protein: 15, carbs: 14, fats: 65, rating: 'B' },
+      
+      // Fast Food
+      'pizza': { calories: 266, protein: 11, carbs: 33, fats: 10, rating: 'D' },
+      'burger': { calories: 295, protein: 17, carbs: 23, fats: 17, rating: 'D' },
+      'fries': { calories: 365, protein: 4, carbs: 63, fats: 17, rating: 'D' },
+      'sandwich': { calories: 200, protein: 10, carbs: 25, fats: 8, rating: 'C' },
+      
+      // Snacks
+      'chips': { calories: 536, protein: 7, carbs: 53, fats: 34, rating: 'D' },
+      'cookies': { calories: 502, protein: 5.9, carbs: 64, fats: 25, rating: 'D' },
+      'chocolate': { calories: 546, protein: 4.9, carbs: 61, fats: 31, rating: 'D' },
+      
+      // Beverages
+      'coffee': { calories: 2, protein: 0.3, carbs: 0, fats: 0, rating: 'A' },
+      'tea': { calories: 1, protein: 0, carbs: 0.3, fats: 0, rating: 'A' },
+      'soda': { calories: 41, protein: 0, carbs: 10.6, fats: 0, rating: 'D' }
     };
 
     const food = nutritionData[foodName.toLowerCase()];

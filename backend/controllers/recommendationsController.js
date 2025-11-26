@@ -99,12 +99,19 @@ const generateRecommendations = async (req, res) => {
       priority: 'medium'
     });
 
-    // Additional exercise recommendations
+    // Detailed exercise recommendations with instructions
     recommendations.push({
       type: 'exercise',
-      title: 'Morning Routine',
-      description: '10-minute morning stretches or yoga to boost energy and flexibility.',
-      priority: 'low'
+      title: 'Bhujangasana (Cobra Pose)',
+      description: 'Lie face down, palms under shoulders. Slowly lift chest, keep hips down. Hold 15-30 seconds. Strengthens spine.',
+      priority: 'medium'
+    });
+
+    recommendations.push({
+      type: 'exercise',
+      title: 'Surya Namaskara (Sun Salutation)',
+      description: '12-step yoga sequence. Start standing, forward fold, plank, cobra, downward dog, return. Repeat 5-10 times.',
+      priority: 'high'
     });
 
     if (user.age > 40) {
