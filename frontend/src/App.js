@@ -197,20 +197,20 @@ function App() {
 
   if (!user) {
     return (
-      <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Arial, sans-serif' }}>
-        <div style={{ background: 'white', borderRadius: '20px', padding: '40px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)', maxWidth: '500px', width: '90%', border: '1px solid #e9ecef' }}>
-          <h1 style={{ textAlign: 'center', color: '#333', marginBottom: '30px', fontSize: '28px' }}>🥗 Diet Assessment Tool</h1>
+      <div style={{ minHeight: '100vh', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Arial, sans-serif' }}>
+        <div style={{ background: 'white', borderRadius: '20px', padding: '40px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', maxWidth: '500px', width: '90%', border: '1px solid #e2e8f0' }}>
+          <h1 style={{ textAlign: 'center', color: '#1e293b', marginBottom: '30px', fontSize: '28px' }}>🥗 Diet Assessment Tool</h1>
           
           {!showRegister ? (
             <div>
-              <h2 style={{ color: '#333', marginBottom: '20px' }}>Welcome Back!</h2>
+              <h2 style={{ color: '#1e293b', marginBottom: '20px' }}>Welcome Back!</h2>
               <form onSubmit={handleLogin}>
                 <input
                   type="email"
                   placeholder="📧 Email"
                   value={loginData.email}
                   onChange={(e) => setLoginData({...loginData, email: e.target.value})}
-                  style={{ width: '100%', padding: '15px', margin: '10px 0', border: '2px solid #e9ecef', borderRadius: '10px', fontSize: '16px', background: '#f8f9fa', color: '#333' }}
+                  style={{ width: '100%', padding: '15px', margin: '10px 0', border: '1px solid #e2e8f0', borderRadius: '10px', fontSize: '16px', background: 'white', color: '#1e293b' }}
                   required
                 />
                 <input
@@ -218,37 +218,37 @@ function App() {
                   placeholder="🔒 Password"
                   value={loginData.password}
                   onChange={(e) => setLoginData({...loginData, password: e.target.value})}
-                  style={{ width: '100%', padding: '15px', margin: '10px 0', border: '2px solid #e9ecef', borderRadius: '10px', fontSize: '16px', background: '#f8f9fa', color: '#333' }}
+                  style={{ width: '100%', padding: '15px', margin: '10px 0', border: '1px solid #e2e8f0', borderRadius: '10px', fontSize: '16px', background: 'white', color: '#1e293b' }}
                   required
                 />
-                <button type="submit" style={{ width: '100%', padding: '15px', background: 'linear-gradient(45deg, #007bff, #0056b3)', color: 'white', border: 'none', borderRadius: '10px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', margin: '10px 0', boxShadow: '0 4px 15px rgba(0, 123, 255, 0.3)' }}>
+                <button type="submit" style={{ width: '100%', padding: '15px', background: '#475569', color: 'white', border: 'none', borderRadius: '10px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', margin: '10px 0' }}>
                   Sign In
                 </button>
               </form>
-              <p style={{ textAlign: 'center', margin: '20px 0', color: '#666' }}>
+              <p style={{ textAlign: 'center', margin: '20px 0', color: '#64748b' }}>
                 Don't have an account? 
-                <button onClick={() => setShowRegister(true)} style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline', marginLeft: '5px' }}>
+                <button onClick={() => setShowRegister(true)} style={{ background: 'none', border: 'none', color: '#475569', cursor: 'pointer', textDecoration: 'underline', marginLeft: '5px' }}>
                   Register here
                 </button>
               </p>
             </div>
           ) : (
             <div>
-              <h2 style={{ color: '#333', marginBottom: '20px' }}>Create Account</h2>
+              <h2 style={{ color: '#1e293b', marginBottom: '20px' }}>Create Account</h2>
               <form onSubmit={handleRegister}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
-                  <input type="text" placeholder="First Name" value={registerData.firstName} onChange={(e) => setRegisterData({...registerData, firstName: e.target.value})} style={{ padding: '12px', border: '2px solid #e9ecef', borderRadius: '8px', background: '#f8f9fa', color: '#333' }} required />
-                  <input type="text" placeholder="Last Name" value={registerData.lastName} onChange={(e) => setRegisterData({...registerData, lastName: e.target.value})} style={{ padding: '12px', border: '2px solid #e9ecef', borderRadius: '8px', background: '#f8f9fa', color: '#333' }} required />
+                  <input type="text" placeholder="First Name" value={registerData.firstName} onChange={(e) => setRegisterData({...registerData, firstName: e.target.value})} style={{ padding: '12px', border: '1px solid #e2e8f0', borderRadius: '8px', background: 'white', color: '#1e293b' }} required />
+                  <input type="text" placeholder="Last Name" value={registerData.lastName} onChange={(e) => setRegisterData({...registerData, lastName: e.target.value})} style={{ padding: '12px', border: '1px solid #e2e8f0', borderRadius: '8px', background: 'white', color: '#1e293b' }} required />
                 </div>
-                <input type="email" placeholder="Email" value={registerData.email} onChange={(e) => setRegisterData({...registerData, email: e.target.value})} style={{ width: '100%', padding: '12px', margin: '10px 0', border: '2px solid #e9ecef', borderRadius: '8px', background: '#f8f9fa', color: '#333' }} required />
-                <input type="password" placeholder="Password" value={registerData.password} onChange={(e) => setRegisterData({...registerData, password: e.target.value})} style={{ width: '100%', padding: '12px', margin: '10px 0', border: '2px solid #e9ecef', borderRadius: '8px', background: '#f8f9fa', color: '#333' }} required />
-                <button type="submit" style={{ width: '100%', padding: '15px', background: 'linear-gradient(45deg, #007bff, #0056b3)', color: 'white', border: 'none', borderRadius: '10px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', margin: '10px 0', boxShadow: '0 4px 15px rgba(0, 123, 255, 0.3)' }}>
+                <input type="email" placeholder="Email" value={registerData.email} onChange={(e) => setRegisterData({...registerData, email: e.target.value})} style={{ width: '100%', padding: '12px', margin: '10px 0', border: '1px solid #e2e8f0', borderRadius: '8px', background: 'white', color: '#1e293b' }} required />
+                <input type="password" placeholder="Password" value={registerData.password} onChange={(e) => setRegisterData({...registerData, password: e.target.value})} style={{ width: '100%', padding: '12px', margin: '10px 0', border: '1px solid #e2e8f0', borderRadius: '8px', background: 'white', color: '#1e293b' }} required />
+                <button type="submit" style={{ width: '100%', padding: '15px', background: '#475569', color: 'white', border: 'none', borderRadius: '10px', fontSize: '16px', fontWeight: 'bold', cursor: 'pointer', margin: '10px 0' }}>
                   Create Account
                 </button>
               </form>
-              <p style={{ textAlign: 'center', margin: '20px 0', color: '#666' }}>
+              <p style={{ textAlign: 'center', margin: '20px 0', color: '#64748b' }}>
                 Already have an account? 
-                <button onClick={() => setShowRegister(false)} style={{ background: 'none', border: 'none', color: '#007bff', cursor: 'pointer', textDecoration: 'underline', marginLeft: '5px' }}>
+                <button onClick={() => setShowRegister(false)} style={{ background: 'none', border: 'none', color: '#475569', cursor: 'pointer', textDecoration: 'underline', marginLeft: '5px' }}>
                   Sign in here
                 </button>
               </p>
@@ -265,10 +265,10 @@ function App() {
   // Show profile setup if needed
   if (showProfileSetup) {
     return (
-      <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Arial, sans-serif' }}>
-        <div style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '20px', padding: '40px', boxShadow: '0 20px 40px rgba(0,0,0,0.3)', maxWidth: '500px', width: '90%' }}>
-          <h2 style={{ textAlign: 'center', color: '#ffffff', marginBottom: '30px' }}>Complete Your Profile</h2>
-          <p style={{ textAlign: 'center', color: '#b0b0b0', marginBottom: '30px' }}>Please provide your details to get personalized recommendations</p>
+      <div style={{ minHeight: '100vh', background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Arial, sans-serif' }}>
+        <div style={{ background: 'white', border: '1px solid #e2e8f0', borderRadius: '20px', padding: '40px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', maxWidth: '500px', width: '90%' }}>
+          <h2 style={{ textAlign: 'center', color: '#1e293b', marginBottom: '30px' }}>Complete Your Profile</h2>
+          <p style={{ textAlign: 'center', color: '#64748b', marginBottom: '30px' }}>Please provide your details to get personalized recommendations</p>
           
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', margin: '10px 0' }}>
             <input type="number" placeholder="Age" value={profileData.age} onChange={(e) => setProfileData({...profileData, age: e.target.value})} style={{ padding: '12px', border: '2px solid rgba(255,255,255,0.2)', borderRadius: '8px', background: 'rgba(255,255,255,0.1)', color: '#ffffff' }} required />
@@ -312,13 +312,13 @@ function App() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)', fontFamily: 'Arial, sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: 'white', fontFamily: 'Arial, sans-serif' }}>
       {/* Header */}
-      <div style={{ background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.1)', padding: '20px', boxShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
+      <div style={{ background: 'white', border: '1px solid #e2e8f0', padding: '20px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h1 style={{ color: '#ffffff', margin: 0 }}>🥗 Diet Assessment Tool</h1>
+          <h1 style={{ color: '#1e293b', margin: 0 }}>🥗 Diet Assessment Tool</h1>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            <span style={{ color: '#e0e0e0' }}>Welcome, {user.firstName}!</span>
+            <span style={{ color: '#64748b' }}>Welcome, {user.firstName}!</span>
             <div style={{ display: 'flex', gap: '10px' }}>
               <button onClick={() => {
                 setProfileData({
@@ -330,10 +330,10 @@ function App() {
                   goal: user.goal || ''
                 });
                 setShowProfileEdit(true);
-              }} style={{ padding: '8px 16px', background: '#28a745', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '14px' }}>
+              }} style={{ padding: '8px 16px', background: '#475569', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '14px' }}>
                 Edit Profile
               </button>
-              <button onClick={handleLogout} style={{ padding: '8px 16px', background: '#dc3545', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '14px' }}>
+              <button onClick={handleLogout} style={{ padding: '8px 16px', background: '#64748b', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontSize: '14px' }}>
                 Logout
               </button>
             </div>
@@ -342,7 +342,7 @@ function App() {
       </div>
 
       {/* Navigation */}
-      <div style={{ background: 'white', borderBottom: '1px solid #eee' }}>
+      <div style={{ background: 'white', borderBottom: '1px solid #e2e8f0' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '0' }}>
           {['dashboard', 'nutrition', 'chatbot', 'recommendations'].map(tab => (
             <button
@@ -353,8 +353,8 @@ function App() {
               }}
               style={{
                 padding: '15px 30px',
-                background: activeTab === tab ? '#667eea' : 'transparent',
-                color: activeTab === tab ? 'white' : '#666',
+                background: activeTab === tab ? '#475569' : 'transparent',
+                color: activeTab === tab ? 'white' : '#64748b',
                 border: 'none',
                 cursor: 'pointer',
                 textTransform: 'capitalize',
@@ -396,12 +396,12 @@ function App() {
               {/* Calorie Progress */}
               <div style={{ background: 'white', padding: '30px', borderRadius: '15px', boxShadow: '0 5px 15px rgba(0,0,0,0.08)', marginBottom: '30px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-                  <h3 style={{ margin: 0, color: '#333' }}>📈 Today's Progress</h3>
+                  <h3 style={{ margin: 0, color: '#1e293b' }}>📈 Today's Progress</h3>
                   <button
                     onClick={() => setShowProgressUpdate(true)}
                     style={{
                       padding: '8px 16px',
-                      background: 'linear-gradient(45deg, #00d4ff, #090979)',
+                      background: '#475569',
                       color: 'white',
                       border: 'none',
                       borderRadius: '20px',
@@ -505,10 +505,10 @@ function App() {
               {showProgressUpdate && (
                 <div style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
                   <div style={{ background: 'white', padding: '30px', borderRadius: '20px', maxWidth: '400px', width: '90%' }}>
-                    <h3 style={{ margin: '0 0 20px 0', color: '#333' }}>Update Today's Progress</h3>
+                    <h3 style={{ margin: '0 0 20px 0', color: '#1e293b' }}>Update Today's Progress</h3>
                     
                     <div style={{ marginBottom: '15px' }}>
-                      <label style={{ display: 'block', marginBottom: '5px', color: '#666', fontSize: '14px' }}>Water Intake (liters)</label>
+                      <label style={{ display: 'block', marginBottom: '5px', color: '#64748b', fontSize: '14px' }}>Water Intake (liters)</label>
                       <input
                         type="number"
                         step="0.1"
